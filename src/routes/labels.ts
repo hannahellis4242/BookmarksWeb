@@ -11,8 +11,12 @@ const labels = ({ bookmarks }: Config) =>
     try {
       console.log("labels");
       const labels = await axios
-        .get<string[]>(`${bookmarks.host}:${bookmarks.port}/label/all`)
-        .then(({ data }) => data);
+        .get<string[]>(`http://${bookmarks.host}:${bookmarks.port}/label/all`)
+        .then(({ data }) => data)
+        .catch((e) => {
+          console.log(`*** ERROR ***\n${e}\n=============`);
+          return Promise.resolve([]);
+        });
       console.log(`Got labels : ${JSON.stringify(labels)}`);
       const grouped = labels.reduce<Dictionary>((acc, x) => {
         const k = x.charAt(0);
@@ -21,7 +25,7 @@ const labels = ({ bookmarks }: Config) =>
         return acc;
       }, {});
       console.log(`groups : ${JSON.stringify(grouped)}`);
-      res.render("./labels", grouped);
+      res.render("./labels", { grouped, isEmpty: labels.length === 0 });
     } catch (e) {
       console.error(e);
       throw e;

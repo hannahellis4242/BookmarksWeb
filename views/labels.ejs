@@ -8,11 +8,13 @@
     <%- include('nav') %>
     <main>
       <header>Labels</header>
-      <section id="tool-bar">
-        <form></form>
-      </section>
+      <% if (isEmpty) { %>
       <section>
-        <% Object.entries(userData).map([key,values] => { %>
+        You have no labels, why not add some links <a href="/links">here</a>.
+      </section>
+      <% } else { %>
+      <section>
+        <% Object.entries(grouped).map(([key,values]) => { %>
         <header><%= key %></header>
         <section>
           <ul>
@@ -23,6 +25,7 @@
         </section>
         <% }) %>
       </section>
+      <% } %>
     </main>
   </body>
 </html>
