@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head') %>
+  </head>
+
+  <body>
+    <%- include('nav') %>
+    <main>
+      <header>Labels</header>
+      <section id="tool-bar">
+        <form></form>
+      </section>
+      <section>
+        <% Object.entries(userData).map([key,values] => { %>
+        <header><%= key %></header>
+        <section>
+          <ul>
+            <% values.map(value => { %>
+            <li><%= value %></li>
+            <% }) %>
+          </ul>
+        </section>
+        <% }) %>
+      </section>
+    </main>
+  </body>
+</html>
