@@ -16,5 +16,10 @@ main{
     }
     a{
         color: $third;
+        font-style: italic;
+        text-decoration: none;
+        &:hover{
+            color:$fourth;
+        }
     }
 }
