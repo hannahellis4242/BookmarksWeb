@@ -1,8 +1,10 @@
 import { Router } from "express";
 import labels from "./labels";
+import Config from "../Config/Config";
 
-const routes = Router();
-routes.get("/",(_,res)=>res.render("./home"));
-routes.use("/labels",labels);
+const routes = (config: Config) =>
+  Router()
+    .use("/labels", labels(config))
+    .get("/", (_, res) => res.render("./home"));
 
 export default routes;

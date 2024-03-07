@@ -14,7 +14,7 @@ import routes from "./routes/routes";
 
       app.use(express.static(join(__dirname, "..", "public")));
 
-      app.use("/", routes);
+      app.use("/", routes(config));
 
       app.listen(config.port, "0.0.0.0", () =>
         console.log(`listening on port ${config.port}`)

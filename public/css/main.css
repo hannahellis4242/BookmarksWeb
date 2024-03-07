@@ -65,3 +65,10 @@ body {
 main header {
   text-align: center;
   font-size: 2rem; }
+
+main a {
+  color: #D7C9AA;
+  font-style: italic;
+  text-decoration: none; }
+  main a:hover {
+    color: #7B2D26; }

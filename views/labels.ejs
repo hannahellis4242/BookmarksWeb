@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head') %>
+  </head>
+
+  <body>
+    <%- include('nav') %>
+    <main>
+      <header>Labels</header>
+      <% if (isEmpty) { %>
+      <section>
+        You have no labels, why not add some links <a href="/links">here</a>.
+      </section>
+      <% } else { %>
+      <section>
+        <% Object.entries(grouped).map(([key,values]) => { %>
+        <header><%= key %></header>
+        <section>
+          <ul>
+            <% values.map(value => { %>
+            <li><%= value %></li>
+            <% }) %>
+          </ul>
+        </section>
+        <% }) %>
+      </section>
+      <% } %>
+    </main>
+  </body>
+</html>
