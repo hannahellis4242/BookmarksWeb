@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json, urlencoded } from "express";
 import getConfig from "./Config/getConfig";
 import { exit } from "process";
 import { join } from "path";
@@ -8,6 +8,8 @@ import routes from "./routes/routes";
   getConfig()
     .then((config) => {
       const app = express();
+      app.use(urlencoded({ extended: true, parameterLimit: 12 }));
+      app.use(json());
 
       app.set("view engine", "ejs");
       app.set("views", join(__dirname, "..", "views"));
