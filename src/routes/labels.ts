@@ -32,9 +32,9 @@ const labels = ({ bookmarks }: Config) =>
         .then(({ data }) => data)
         .catch(recover);
       const grouped = labels.reduce<Dictionary>((acc, x) => {
-        const k = x.charAt(0);
-        const cur = acc[k];
-        cur.push(x);
+        const k = x.charAt(0).toUpperCase();
+        const cur = acc[k] || [];
+        acc[k] = cur.concat([x]);
         return acc;
       }, {});
       res.render("./labels", { grouped, isEmpty: labels.length === 0 });

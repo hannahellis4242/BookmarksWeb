@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head') %>
+  </head>
+
+  <body>
+    <%- include('nav') %>
+    <main>
+      <header>Links</header>
+      <form action="/links/submit" method="post">
+        <label for="link">Link:</label>
+        <input
+          type="text"
+          id="link"
+          name="link"
+          placeholder="Enter your link here"
+          required
+        />
+        <!-- Something for a future version
+          <label for="label">Label:</label>
+        <input type="text" id="label" name="label" placeholder="Optional" />-->
+        <button type="submit">Add</button>
+      </form>
+      <% if (isEmpty) { %>
+      <section>You have no links, why not add some above?</section>
+      <% } else { %>
+      <section id="links-section">
+        <% data.map(({link,labels}) => { %>
+        <section id="<%= link %>">
+          <a href="<%= link %>"><%= link %></a>
+          <ul>
+            <% labels.map(value => { %>
+            <li><%= value %></li>
+            <% }) %>
+          </ul>
+          <form action="/links/tag" method="post">
+            <input type="hidden" name="link" value="<%= link %>" />
+            <input
+              type="text"
+              name="label"
+              placeholder="Add a new label"
+              required
+            />
+            <button type="submit">Add</button>
+          </form>
+        </section>
+        <% }) %>
+      </section>
+      <% } %>
+    </main>
+  </body>
+</html>

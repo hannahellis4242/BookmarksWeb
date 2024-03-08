@@ -56,6 +56,36 @@ nav {
       text-decoration: none;
       font-weight: bold; }
 
+form {
+  padding: 2rem;
+  background-color: #7B2D26;
+  margin: auto;
+  border: 1px solid #D7C9AA;
+  width: fit-content;
+  border-radius: 2rem; }
+
+#links-section {
+  background-color: #0B7A75;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem; }
+  #links-section section {
+    background-color: #7B2D26;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem auto;
+    font-size: 1rem;
+    text-align: left; }
+    #links-section section form {
+      border: none;
+      background-color: inherit;
+      margin: 0; }
+    #links-section section a {
+      color: #F0F3F5; }
+      #links-section section a:hover {
+        color: #F0F3F5;
+        font-weight: bold; }
+
 body {
   background-color: #19535F;
   color: #F0F3F5;
