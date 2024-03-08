@@ -1,0 +1,26 @@
+#links-section{
+    background-color: $second;
+    width:90%;
+    margin: 2rem auto;
+    padding:2rem;
+    section{
+        background-color: $fourth;
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem auto;
+        font-size: 1rem;
+        text-align: left;
+        form{
+            border: none;
+            background-color: inherit;
+            margin:0;
+        }
+        a{
+            color: $fifth;
+            &:hover{
+                color: $fifth;
+                font-weight: bold;
+            }
+        }
+    }
+}

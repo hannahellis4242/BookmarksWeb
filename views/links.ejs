@@ -25,15 +25,25 @@
       <% if (isEmpty) { %>
       <section>You have no links, why not add some above?</section>
       <% } else { %>
-      <section>
-        <% Object.entries(grouped).map(([key,values]) => { %>
-        <header><%= key %></header>
-        <section>
+      <section id="links-section">
+        <% data.map(({link,labels}) => { %>
+        <section id="<%= link %>">
+          <a href="<%= link %>"><%= link %></a>
           <ul>
-            <% values.map(value => { %>
+            <% labels.map(value => { %>
             <li><%= value %></li>
             <% }) %>
           </ul>
+          <form action="/links/tag" method="post">
+            <input type="hidden" name="link" value="<%= link %>" />
+            <input
+              type="text"
+              name="label"
+              placeholder="Add a new label"
+              required
+            />
+            <button type="submit">Add</button>
+          </form>
         </section>
         <% }) %>
       </section>

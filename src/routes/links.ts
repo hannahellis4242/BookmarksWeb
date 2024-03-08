@@ -50,9 +50,22 @@ const links = ({ bookmarks }: Config) =>
         if (!link) {
           throw new Error("error no link in submit body in link submit");
         }
-        await axios.post(`http://${bookmarks.host}:${bookmarks.port}\link`, {
+        await axios.post(`http://${bookmarks.host}:${bookmarks.port}/link`, {
           link,
         });
+        res.redirect("/links");
+      } catch (e) {
+        console.log(e);
+        throw e;
+      }
+    })
+    .post("/tag", async (req, res) => {
+      console.log(req.body);
+      try {
+        await axios.post(
+          `http://${bookmarks.host}:${bookmarks.port}/tag`,
+          req.body
+        );
         res.redirect("/links");
       } catch (e) {
         console.log(e);
